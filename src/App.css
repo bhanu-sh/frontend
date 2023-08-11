@@ -1,0 +1,16 @@
+.myclass{
+    color: crimson;
+    font-size: 30px;
+}
+
+.home-bg{
+    background-image: url('/public/back_img.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.nav-item .active{
+    font-weight: bold;
+    border-bottom: 2px solid blueviolet;
+    color: blueviolet !important;
+}
