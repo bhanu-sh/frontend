@@ -10,6 +10,7 @@ import EventHandling from './components/EventHandling';
 import StateManagement from './components/StateManagement';
 import FbPost from './components/FbPost';
 import Todo from './components/Todo';
+import Browse from './components/Browse';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route element = {<StateManagement />} path="/state" />
           <Route element = {<FbPost />} path="/fbpost" />
           <Route element = {<Todo />} path="/todo" />
+          <Route element = {<Browse />} path="/browse" />
           <Route element = {<NotFound />} path="*" />
         </Routes>
       </BrowserRouter>
