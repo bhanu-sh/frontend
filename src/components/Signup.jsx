@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import * as Yup from 'yup';
 
 
@@ -9,6 +11,9 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   // initialize the formik
   const signupForm = useFormik({
     initialValues: {
@@ -16,7 +21,7 @@ const Signup = () => {
       email: "",
       password: "",
     },
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
       setTimeout(() => {
         console.log(values);
@@ -26,6 +31,36 @@ const Signup = () => {
       
 
       // send the data to the server
+
+      const res = await fetch('http://localhost:5000/user/add', { 
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+       });
+
+       console.log(res.status);
+
+       if(res.status === 200){
+        Swal.fire({
+          icon: 'success',
+          title: 'Nice',
+          text:'You have successfully signed up!'
+        })
+        .then((result) => {
+          navigate('/login');
+        }).catch((err) => {
+          console.log(err);
+        });
+       }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        
+       }
 
     },
     validationSchema: SignupSchema,
