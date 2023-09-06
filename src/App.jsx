@@ -11,6 +11,7 @@ import StateManagement from './components/StateManagement';
 import FbPost from './components/FbPost';
 import Todo from './components/Todo';
 import Browse from './components/Browse';
+import ManageUser from './components/ManageUser';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route element = {<FbPost />} path="/fbpost" />
           <Route element = {<Todo />} path="/todo" />
           <Route element = {<Browse />} path="/browse" />
+          <Route element = {<ManageUser />} path="/manageuser" />
           <Route element = {<NotFound />} path="*" />
         </Routes>
       </BrowserRouter>
