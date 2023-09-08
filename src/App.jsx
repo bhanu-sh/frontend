@@ -12,31 +12,36 @@ import FbPost from './components/FbPost';
 import Todo from './components/Todo';
 import Browse from './components/Browse';
 import ManageUser from './components/ManageUser';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   return (
     <div>
+
+      <AnimatePresence>
+
       
-      <BrowserRouter>
+        <BrowserRouter>
 
-        <Navbar />
+          <Navbar />
 
-        {/* <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link> */}
+          {/* <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link> */}
 
-        <Routes>
-          <Route element = {<Home />} path="/" />
-          <Route element = {<Login />} path="/login" />
-          <Route element = {<Signup />} path="/signup" />
-          <Route element = {<EventHandling />} path="/event" />
-          <Route element = {<StateManagement />} path="/state" />
-          <Route element = {<FbPost />} path="/fbpost" />
-          <Route element = {<Todo />} path="/todo" />
-          <Route element = {<Browse />} path="/browse" />
-          <Route element = {<ManageUser />} path="/manageuser" />
-          <Route element = {<NotFound />} path="*" />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            <Route element = {<Home />} path="/" />
+            <Route element = {<Login />} path="/login" />
+            <Route element = {<Signup />} path="/signup" />
+            <Route element = {<EventHandling />} path="/event" />
+            <Route element = {<StateManagement />} path="/state" />
+            <Route element = {<FbPost />} path="/fbpost" />
+            <Route element = {<Todo />} path="/todo" />
+            <Route element = {<Browse />} path="/browse" />
+            <Route element = {<ManageUser />} path="/manageuser" />
+            <Route element = {<NotFound />} path="*" />
+          </Routes>
+        </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 }

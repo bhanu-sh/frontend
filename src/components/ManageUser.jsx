@@ -29,14 +29,15 @@ const ManageUser = () => {
 
         <table className='table table-dark'>
             <thead>
-                <tr>
+                <tr className='text-center'>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Password</th>
+                    <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className='text-center'>
                 {
                     userData.map( (user) => {
                         return <tr>
@@ -44,6 +45,9 @@ const ManageUser = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.password}</td>
+                            <td>
+                                <button className='btn btn-danger'>Delete</button>
+                            </td>
                         </tr>
                     })
                 }

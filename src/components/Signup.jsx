@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from 'yup';
+import {motion} from 'framer-motion';
 
 
 const SignupSchema = Yup.object().shape({
@@ -68,7 +69,12 @@ const Signup = () => {
   });
 
   return (
-    <div>
+    <motion.div
+    initial={{x: '100%', opacity: 0}}
+    animate={{x: 0, opacity: 1}}
+    exit={{x: '-100%', opacity: 0}}
+    transition={{duration: 0.3, stiffness: 100, damping: 4 ,type: 'spring'}}>
+
       <div className="col-md-4 mx-auto">
         <div className="card shadow">
           <div className="card-body">
@@ -126,7 +132,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
