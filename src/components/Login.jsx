@@ -2,8 +2,12 @@ import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
 import {motion} from 'framer-motion';
+import UseAppContext from "../AppContext";
 
 const Login = () => {
+
+  const { setLoggedin } = UseAppContext();
+
   const loginForm = useFormik({
     initialValues: {
       email: "",
@@ -34,6 +38,8 @@ const Login = () => {
         console.log(data);
 
         sessionStorage.setItem('user', JSON.stringify(data));
+
+        setLoggedin(true);
 
       }else if(res.status === 401){
         Swal.fire({

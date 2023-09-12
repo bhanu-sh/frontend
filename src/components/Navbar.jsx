@@ -1,7 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import UseAppContext from "../AppContext";
 
 const Navbar = () => {
+
+  const {loggedin, logout} = UseAppContext();
+
+  const displayUserOption = () => {
+    if(loggedin){
+      return(
+        <li className="nav-item">
+          <button className="btn btn-danger" onClick={logout}>Logout</button>
+        </li>
+      );
+    }
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -67,17 +81,11 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            {displayUserOption()}
+          </ul>
+
         </div>
       </div>
     </nav>

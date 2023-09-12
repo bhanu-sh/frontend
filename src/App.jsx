@@ -13,33 +13,37 @@ import Todo from './components/Todo';
 import Browse from './components/Browse';
 import ManageUser from './components/ManageUser';
 import { AnimatePresence } from 'framer-motion';
+import { AppProvider } from './AppContext';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div>
-
-      <AnimatePresence>
+      <Toaster position='top right' />
+      <AnimatePresence mode = "popLayout">
 
       
         <BrowserRouter>
+          <AppProvider>
 
-          <Navbar />
+            <Navbar />
 
-          {/* <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link> */}
+            {/* <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link> */}
 
-          <Routes>
-            <Route element = {<Home />} path="/" />
-            <Route element = {<Login />} path="/login" />
-            <Route element = {<Signup />} path="/signup" />
-            <Route element = {<EventHandling />} path="/event" />
-            <Route element = {<StateManagement />} path="/state" />
-            <Route element = {<FbPost />} path="/fbpost" />
-            <Route element = {<Todo />} path="/todo" />
-            <Route element = {<Browse />} path="/browse" />
-            <Route element = {<ManageUser />} path="/manageuser" />
-            <Route element = {<NotFound />} path="*" />
-          </Routes>
+            <Routes>
+              <Route element = {<Home />} path="/" />
+              <Route element = {<Login />} path="/login" />
+              <Route element = {<Signup />} path="/signup" />
+              <Route element = {<EventHandling />} path="/event" />
+              <Route element = {<StateManagement />} path="/state" />
+              <Route element = {<FbPost />} path="/fbpost" />
+              <Route element = {<Todo />} path="/todo" />
+              <Route element = {<Browse />} path="/browse" />
+              <Route element = {<ManageUser />} path="/manageuser" />
+              <Route element = {<NotFound />} path="*" />
+            </Routes>
+          </AppProvider>
         </BrowserRouter>
       </AnimatePresence>
     </div>
