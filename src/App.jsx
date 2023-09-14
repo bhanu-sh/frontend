@@ -12,6 +12,7 @@ import FbPost from './components/FbPost';
 import Todo from './components/Todo';
 import Browse from './components/Browse';
 import ManageUser from './components/ManageUser';
+import UserAuth from './components/UserAuth';
 import { AnimatePresence } from 'framer-motion';
 import { AppProvider } from './AppContext';
 import { Toaster } from 'react-hot-toast';
@@ -40,7 +41,7 @@ function App() {
               <Route element = {<FbPost />} path="/fbpost" />
               <Route element = {<Todo />} path="/todo" />
               <Route element = {<Browse />} path="/browse" />
-              <Route element = {<ManageUser />} path="/manageuser" />
+              <Route element = {<UserAuth><ManageUser /></UserAuth> } path="/manageuser" />
               <Route element = {<NotFound />} path="*" />
             </Routes>
           </AppProvider>

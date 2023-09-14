@@ -1,27 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import UseAppContext from "../AppContext";
 
 const Navbar = () => {
+  const { loggedin, logout } = UseAppContext();
 
-  const {loggedin, logout} = UseAppContext();
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
 
   const displayUserOption = () => {
-    if(loggedin){
-      return(
+    if (loggedin) {
+      return (
+        <>
         <li className="nav-item">
-          <button className="btn btn-danger" onClick={logout}>Logout</button>
+          <button className="btn btn-danger" onClick={logout}>
+            Logout
+          </button>
         </li>
+        <li>
+          <img height={50} width={50} className="rounded-circle" src={'http://localhost:5000/'+currentUser.avatar} alt="avatar" />
+        </li>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/login">
+              Login
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/signup">
+              Signup
+            </NavLink>
+          </li>
+        </>
       );
     }
-  }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
+        <a className="navbar-brand" href="#">
           Navbar
-        </NavLink>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -40,16 +66,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/signup">
-                Signup
-              </NavLink>
-            </li>
+
             <li className="nav-item">
               <NavLink className="nav-link" to="/event">
                 Event Handling
@@ -61,13 +78,13 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/fbpost">
+              <NavLink className="nav-link" to="/FbPost">
                 Facebook Post
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/todo">
-                To-Do List
+                Todo
               </NavLink>
             </li>
             <li className="nav-item">
@@ -81,11 +98,10 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          
+
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {displayUserOption()}
           </ul>
-
         </div>
       </div>
     </nav>
