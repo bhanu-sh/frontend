@@ -16,6 +16,7 @@ import UserAuth from './components/UserAuth';
 import { AnimatePresence } from 'framer-motion';
 import { AppProvider } from './AppContext';
 import { Toaster } from 'react-hot-toast';
+import UpdateUser from './components/UpdateUser';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route element = {<Todo />} path="/todo" />
               <Route element = {<Browse />} path="/browse" />
               <Route element = {<UserAuth><ManageUser /></UserAuth> } path="/manageuser" />
+              <Route element = {<UpdateUser /> } path="/updateuser/:id" />
               <Route element = {<NotFound />} path="*" />
             </Routes>
           </AppProvider>
